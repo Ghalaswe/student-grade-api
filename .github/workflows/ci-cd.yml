@@ -30,11 +30,11 @@ jobs:
       - name: Build and test with Maven
         run: mvn --batch-mode clean verify
 
-      # 4) Run SonarQube Cloud analysis
+         # 4) Run SonarQube Cloud analysis
       - name: SonarQube Cloud scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn --batch-mode org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Ghalaswe_student-grade-api
 
       # 5) Log in to Docker Hub
       - name: Log in to Docker Hub
